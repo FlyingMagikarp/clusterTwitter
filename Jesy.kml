@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="1">
+        <Placemark id="3">
+            <name>Cluster 0</name>
+            <Point id="2">
+                <coordinates>5.0305798500000005,46.074164249999995,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="5">
+            <name>Cluster 1</name>
+            <Point id="4">
+                <coordinates>-95.3939142,37.0320193,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="7">
+            <name>Cluster 2</name>
+            <Point id="6">
+                <coordinates>-51.92528,-17.5833734,0.0</coordinates>
+            </Point>
+        </Placemark>
+    </Document>
+</kml>

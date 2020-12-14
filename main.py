@@ -5,28 +5,23 @@ from cluster import KMeansClustering
 from cluster.util import centroid
 from geopy import geocoders
 
-CONSUMER_KEY = 'jmmSMAP56aeUmMhzLr4KlLnaN'
-CONSUMER_SECRET = 'I0QVD4DvTNAmYXi22RqzV2j8z2PquvNRaBDzOszwqj6zLP7U8b'
-OAUTH_TOKEN = '2858402725-abrGffa9XKnQFNNhDpMlx3McEUwwSbnEHwgbFYQ'
-OAUTH_TOKEN_SECRET = 'sQV9hidEZs2fqJcPICJuaklVfVwnBlcYErbrzIPKinnol'
+CONSUMER_KEY = ''
+CONSUMER_SECRET = ''
+OAUTH_TOKEN = ''
+OAUTH_TOKEN_SECRET = ''
 
-GOOGLE_MAPS_SECRET_KEY = 'AIzaSyAMhLLJgE6TNCZHWIvopJB9bLtxTUmdq2Q'
+GOOGLE_MAPS_SECRET_KEY = ''
 
-#auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
-#api = twitter.Twitter(auth=auth)
+auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
+api = twitter.Twitter(auth=auth)
 
-auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-api = tweepy.API(auth)
-
-auth2 = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
-twitter_api = twitter.Twitter(auth=auth2)
+auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET, CONSUMER_KEY, CONSUMER_SECRET)
+twitter_api = twitter.Twitter(auth=auth)
 
 geocoder = geocoders.GoogleV3(api_key=GOOGLE_MAPS_SECRET_KEY)
 
 WORLD_WOE_ID = 1
-# world_trends = twitter_api.trends.place(_id=WORLD_WOE_ID)
 
-#world_trends = api.trends_place(_id=WORLD_WOE_ID)
 world_trends = twitter_api.trends.place(_id=WORLD_WOE_ID)
 mainTrend = world_trends[0]['trends'][:1]
 
@@ -38,7 +33,7 @@ for trend in mainTrend:
     for tweet in tweepy.Cursor(api.search, q=trend['query']).items(TWEET_SAMPLE_SIZE):
         if tweet.user.location:
             print(i)
-            i+=1
+            i += 1
             try:
                 location = geocoder.geocode(tweet.user.location)
                 location_list.append({"lat": location.latitude, "lon": location.longitude})
